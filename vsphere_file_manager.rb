@@ -12,6 +12,7 @@ class VsphereFileManager < Thor
   method_option :username, :required => true, :type => :string
   method_option :password, :required => true, :type => :string
   method_option :insecure, :required => false, :type => :boolean, :default => false
+  method_option :overwrite, :required => false, :type => :boolean, :default => false
   def upload(local_path, remote_path)
     vim = connect_vcenter options[:vcenter],
       options[:username],
@@ -19,7 +20,7 @@ class VsphereFileManager < Thor
       options[:insecure]
     dc = vim.serviceInstance.find_datacenter(options[:datacenter])
     ds = dc.find_datastore(options[:datastore])
-    raise 'Remote file already exists!' if ds.exists?(remote_path)
+    raise 'Remote file already exists!' if ds.exists?(remote_path) and not options[:overwrite]
     ds.upload remote_path, local_path
   end
 
