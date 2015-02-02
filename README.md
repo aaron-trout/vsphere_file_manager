@@ -47,5 +47,20 @@ Download a file from a remote datastore
 ```
 
 ## Running with Docker
+You first need to build the docker image, then you can use `docker run` and append your command
+onto the end of the docker command.
 
-[COMING SOON!]
+Inside the container the script is linked as `/usr/local/bin/vsphere_file_manager` and also `/usr/local/bin/vfm` for convienience.
+
+```
+docker build --rm -t vs_fileman .
+
+docker run --rm -it vs_fileman vfm [command] [options]
+```
+
+Example:
+
+```
+# Get help on a command
+  docker run --rm -it vs_fileman vfm help upload
+```
