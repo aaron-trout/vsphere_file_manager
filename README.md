@@ -24,6 +24,7 @@ Options:
   --username=USERNAME
   --password=PASSWORD
   [--insecure], [--no-insecure]
+  [--overwrite], [--no-overwrite]
 
 Upload a file to a datastore
 ```
