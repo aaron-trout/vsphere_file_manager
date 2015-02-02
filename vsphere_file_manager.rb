@@ -23,7 +23,7 @@ class VsphereFileManager < Thor
     ds.upload remote_path, local_path
   end
 
-  desc 'download remote_path local_path', 'Upload a file to a datastore'
+  desc 'download remote_path local_path', 'Download a file from a remote datastore'
   method_option :datacenter, :required => true, :type => :string
   method_option :datastore, :required => true, :type => :string
   method_option :vcenter, :required => true, :type => :string
